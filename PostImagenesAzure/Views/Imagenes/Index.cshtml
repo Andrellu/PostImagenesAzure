@@ -1,0 +1,31 @@
+﻿@model List<string>
+
+<div class="text-center">
+    <h1>Listado Imagenes Pokemon</h1>
+</div>
+
+<a class="btn btn-success" asp-controller="Imagenes" asp-action="UploadImagen">Subir Imagen</a>
+
+
+@if (Model != null) 
+{ 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>NOMBRE</th>
+                <th>IMAGEN</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(string img in Model)
+             {
+                <tr>
+                    <td>@img</td>
+                    <td><img src="https://storagepostimagenes.blob.core.windows.net/pokemon/@img" width="200" alt="@img" /></td>
+                    <td><a class="btn btn-danger" asp-controller="Imagenes" asp-action="Delete" asp-route-nombre="@img">Delete</a></td>
+                </tr>
+             }
+        </tbody>
+    </table>
+}
